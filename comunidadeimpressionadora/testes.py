@@ -68,7 +68,29 @@ os.system('cls')
 #     database.create_all()
 
 # # Comando para verificar os usuarios no Banco de Dados
+# with app.app_context():
+#     meus_usuarios = Usuario.query.all()
+#     print(meus_usuarios)
+
+
+# ---------------------------------------
+# Teste de usuários que deu certo no main.py
+
+from comunidadeimpressionadora import app
+from comunidadeimpressionadora.models import Usuario
+from comunidadeimpressionadora import database
+import os
+
+os.system('cls')
 with app.app_context():
     meus_usuarios = Usuario.query.all()
-    print(meus_usuarios)
+    for usuario in meus_usuarios:
+        print(usuario)
+        print(usuario.username)
+        print(usuario.email)
+        print(usuario.senha)
+        print('---' * 9)
+        
+# -----------------------------------------
+
 
