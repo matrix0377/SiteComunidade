@@ -1,4 +1,4 @@
-from comunidadeimpressionadora import database 
+from comunidadeimpressionadora import database
 from datetime import datetime
 
 class Usuario(database.Model):

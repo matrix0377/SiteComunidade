@@ -60,3 +60,15 @@ os.system('cls')
 #     database.drop_all()
 #     database.create_all()
 
+
+
+# Comandos para deletar e recriar o Banco de Dados
+# with app.app_context():
+#     database.drop_all()
+#     database.create_all()
+
+# # Comando para verificar os usuarios no Banco de Dados
+with app.app_context():
+    meus_usuarios = Usuario.query.all()
+    print(meus_usuarios)
+
