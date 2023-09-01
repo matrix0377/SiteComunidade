@@ -1,4 +1,4 @@
-from comunidadeimpressionadora import app
+from comunidadeimpressionadora import app, bcrypt
 
 # teste -  tirar daqui
 from comunidadeimpressionadora.models import Usuario
@@ -19,17 +19,24 @@ if __name__ == '__main__':
 # Comando para verificar os usuarios no Banco de Dados
 
 # Teste --> apagar depois
-os.system('cls')
+#os.system('cls')
 with app.app_context():
     meus_usuarios = Usuario.query.all()
+    if meus_usuarios=="": 
+            print('Nenhum usuário cadastrado')
     for usuario in meus_usuarios:
         print(usuario)
         print(usuario.username)
         print(usuario.email)
         print(usuario.senha)
-        print('---' * 9)
+        print('---' * 15)
+        
+        
+    
     
 # with app.app_context():
 #     database.drop_all()
 #     database.create_all()
+#     print('Usuarios apagados do Banco de Dados...')
+    
     
