@@ -32,7 +32,11 @@ def login():
         if usuario and bcrypt.check_password_hash(usuario.senha, form_login.senha.data):
             login_user(usuario, remember=form_login.lembrar_dados.data)
             flash(f'Login feito com sucesso no e-mail: {form_login.email.data}', 'alert-success')
-            return redirect(url_for('home'))
+            par_next = request.args.get('next')
+            if par_next:
+                return redirect(par_next)
+            else:
+                return redirect(url_for('home'))
         else:
             flash(f'Falha no Login. E-mail ou Senha Incorretos', 'alert-danger')        
     if form_criarconta.validate_on_submit() and 'botao_submit_criarconta' in request.form:
@@ -61,7 +65,8 @@ def sair():
 @app.route('/perfil')
 @login_required
 def perfil():
-    return render_template('perfil.html')
+    foto_perfil = url_for('static', filename='fotos_perfil/{}'.format(current_user.foto_perfil))
+    return render_template('perfil.html', foto_perfil=foto_perfil)
 
 
 
@@ -70,6 +75,12 @@ def perfil():
 def criar_post():
     return render_template('criarpost.html')
 
+
+@app.route('/perfil/editar')
+@login_required
+def editar_perfil():
+    foto_perfil = url_for('static', filename='fotos_perfil/{}'.format(current_user.foto_perfil))
+    return render_template('editar_perfil.html', foto_perfil=foto_perfil)
 
 
 
