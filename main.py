@@ -24,15 +24,16 @@ with app.app_context():
     meus_usuarios = Usuario.query.all()
     if meus_usuarios=="": 
             print('Nenhum usuário cadastrado')
-    c = 1
-    for usuario in meus_usuarios:
-        print("--> ", c)
-        print(usuario)
-        print(usuario.username)
-        print(usuario.email)
-        print(usuario.senha)
-        print('---' * 15)
-        c += 1
+    else:
+        c = 1
+        for usuario in meus_usuarios:
+            print("--> ", c)
+            print(usuario)
+            print(usuario.username)
+            print(usuario.email)
+            print(usuario.senha)
+            print('---' * 15)
+            c += 1
         
         
     
