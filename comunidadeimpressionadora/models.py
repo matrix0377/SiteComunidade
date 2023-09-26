@@ -1,7 +1,10 @@
 from comunidadeimpressionadora import database, login_manager
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
+import pytz
 from flask_login import UserMixin
 
+
+#date_time = now.strftime("%d/%m/%Y, %H:%M")
 
 @login_manager.user_loader
 def load_manager(id_usuario):
@@ -17,12 +20,17 @@ class Usuario(database.Model, UserMixin):
     posts = database.relationship('Post', backref='autor', lazy=True)
     cursos = database.Column(database.String, nullable=False, default='Não Informado')
     
+    def contar_posts(self):
+        return len(self.posts)
+    
 
 class Post(database.Model):
     id = database.Column(database.Integer, primary_key=True)
     titulo = database.Column(database.String, nullable=False)
     corpo =  database.Column(database.Text, nullable=False)
-    data_criacao = database.Column(database.DateTime, nullable=False, default=datetime.utcnow)
+    data_criacao = database.Column(database.DateTime, nullable=False, default=datetime.now(tz=timezone(timedelta(hours=-3))))
     id_usuario = database.Column(database.Integer, database.ForeignKey('usuario.id'), nullable=False)
+    #data_criacao = database.Column(database.DateTime, nullable=False, default=datetime.utcnow)
+    
     
     

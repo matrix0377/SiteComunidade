@@ -1,6 +1,9 @@
-from main import app, database
+from comunidadeimpressionadora import app
+from comunidadeimpressionadora.models import Usuario
+from comunidadeimpressionadora import database
 from comunidadeimpressionadora.models import Usuario, Post 
 import os
+
 
 os.system('cls')
 
@@ -62,24 +65,7 @@ os.system('cls')
 
 
 
-# Comandos para deletar e recriar o Banco de Dados
-# with app.app_context():
-#     database.drop_all()
-#     database.create_all()
 
-# # Comando para verificar os usuarios no Banco de Dados
-# with app.app_context():
-#     meus_usuarios = Usuario.query.all()
-#     print(meus_usuarios)
-
-
-# ---------------------------------------
-# Teste de usuários que deu certo no main.py
-
-from comunidadeimpressionadora import app
-from comunidadeimpressionadora.models import Usuario
-from comunidadeimpressionadora import database
-import os
 
 os.system('cls')
 with app.app_context():
@@ -93,4 +79,16 @@ with app.app_context():
         
 # -----------------------------------------
 
+# Comandos para deletar e recriar o Banco de Dados
+# with app.app_context():
+#     database.drop_all()
+#     database.create_all()
 
+# # Comando para verificar os usuarios no Banco de Dados
+# with app.app_context():
+#     meus_usuarios = Usuario.query.all()
+#     print(meus_usuarios)
+
+
+# ---------------------------------------
+# Teste de usuários que deu certo no main.py
